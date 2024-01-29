@@ -1,0 +1,44 @@
+body{
+	background-color: #282828;
+    color: #555555;
+    font-size: 13px;
+	font-family:arial;
+}
+#wrapper{
+	margin:0 auto;
+	width:900px;
+}
+.clearfix{
+	clear:both;
+}
+#note{
+	background-color: #fff;
+	padding:10px;
+	margin-bottom:10px;
+}
+#content{
+}
+#productlist{
+	display:-webkit-box;
+	-webkit-box-orient:horizontal;
+	background-color: white;
+	padding:10px;
+	float:left;
+	width:600px;
+	-webkit-box-align:center;
+	color:black;
+
+}
+#productlist img{
+	border:2px solid #282828;	
+}
+
+#orderlist{
+	background-color: #fff;
+	padding:10px;
+	float:right;
+	width:250px;
+}
+.pngfix{
+	padding:25px;
+}

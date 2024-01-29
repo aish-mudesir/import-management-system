@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="css/dstyle.css" type="text/css" media="screen" charset="utf-8">
+<link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+   <script src="lib/jquery.js" type="text/javascript"></script>
+  <script src="src/facebox.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox({
+        loadingImage :'src/loading.gif',
+        closeImage   :'src/close_icon.gif
+      })
+    })
+  </script>
+Order Date: <?php
+include('includes/conn.php');
+		$id=$_GET['id'];
+		$result = mysql_query("SELECT * FROM process WHERE confirmation='$id'");
+		while($row = mysql_fetch_array($result))
+			{
+				echo $row['date'];
+			}
+	?> 
+<table cellpadding="1" cellspacing="1" id="resultTable">
+	<thead>
+		<tr>
+			<th  style="border-left: 1px solid #C1DAD7"> Name </th>
+			<th> Quantity </th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php
+		
+		$id=$_GET['id'];
+		$result = mysql_query("SELECT * FROM orders WHERE confirmation='$id'");
+		while($row = mysql_fetch_array($result))
+			{
+				echo '<tr class="record">';
+				echo '<td style="border-left: 1px solid #C1DAD7;">'.$row['product'].'</td>';
+				echo '<td>'.$row['qty'].' | <a rel="facebox" href="design.php?id='.$row['id'].'"></a></td>';
+				echo '<td>'.$row['note'].'</td>';
+				echo '</tr>';
+			}
+	?> 
+	<?php
+		$id=$_GET['id'];
+		$result = mysql_query("SELECT * FROM process WHERE confirmation='$id'");
+		while($row = mysql_fetch_array($result))
+			{
+				echo '<tr class="record">';
+				echo '<td style="border-left: 1px solid #C1DAD7;">Total Payable</td>';
+				echo '<td>'.$row['payable'].'</td>';
+				echo '</tr>';
+			}
+	?> 
+	</tbody>
+</table>
